@@ -82,9 +82,7 @@ CORS_ALLOWED_ORIGINS = [
     "*", 
     "http://localhost:3000/",
     "http://13.201.222.254:5000",
-    http://13.201.222.254:5000,
     "http://13.201.222.254",
-    http://13.201.222.254,
     # Add the origin of your frontend
     # Add other origins as needed
   ]
