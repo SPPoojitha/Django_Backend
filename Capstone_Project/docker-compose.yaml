@@ -1,0 +1,54 @@
+version: "3.8"
+services:
+  backend:
+   image: backend-image
+   depends_on:
+     - mysql
+   networks:
+     - mynetwork
+   environment:
+     - DB_ENGINE=django.db.backends.mysql
+     - DB_NAME=django_testing
+     - DB_USER=admin
+     - DB_PASSWORD=admin
+     - DB_HOST=mysql
+     - DB_PORT=3306
+   restart: always
+  frontend:
+   image: frontend-image
+   depends_on:
+     - backend
+   networks:
+     - mynetwork
+   restart: always
+  mysql:
+   image: mysql:latest
+   networks:
+     - mynetwork
+   volumes:
+     - ./mysql:/var/lib/mysql
+   environment:
+     - MYSQL_ROOT_PASSWORD=root
+     - MYSQL_DATABASE=django_testing
+     - MYSQL_USER=admin
+     - MYSQL_PASSWORD=admin
+   restart: always
+  nginx:
+   image: nginx:latest
+   container_name: nginx
+   volumes:
+     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+   ports:
+     - "80:80"
+     - "443:443"
+   depends_on:
+     - mysql
+     - backend
+     - frontend
+   networks:
+     - mynetwork
+   restart: always
+networks:
+  mynetwork:
+   name: tih_network
+   driver: bridge
