@@ -78,16 +78,21 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'samanthavadateja1522@gmail.com'
 EMAIL_HOST_PASSWORD = 'ivvl ripr lmhu dlvi'
 
-# CORS_ALLOWED_ORIGINS = [
-#     "*", http://localhost:3000/ 
-#     # Add the origin of your frontend
-#     # Add other origins as needed
-#   ]
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://0.0.0.0",
-    "http://0.0.0.0.",
-]
+    "*", 
+    "http://localhost:3000/",
+    "http://13.201.222.254:5000",
+    http://13.201.222.254:5000,
+    "http://13.201.222.254",
+    http://13.201.222.254,
+    # Add the origin of your frontend
+    # Add other origins as needed
+  ]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "https://0.0.0.0",
+#     "http://0.0.0.0.",
+# ]
 
 ROOT_URLCONF = 'TIH.urls'
 
